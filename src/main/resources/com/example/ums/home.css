@@ -1,0 +1,28 @@
+#topAnchor{
+-fx-background-color: lightblue;
+}
+#topAnchor: hover{
+-fx-background-color: rgb(244,244,244);
+}
+#exitButton{
+    -fx-background-color: rgb(142, 199, 218);
+    -fx-border-color: rgb(118, 183, 205);
+    -fx-border-width:1px;
+}
+#exitButton: hover{
+    -fx-background-color: rgb(244,244,244);
+    -fx-border-color: rgb(244, 244, 244);
+}
+#leftAnchor{
+-fx-background-color: lightblue;
+}
+#contentArea{
+ -fx-background-color:lightgrey;
+}
+.button{
+    -fx-background-color: #fff;
+    -fx-border-width:2px;
+     }
+     .button: hover{
+     -fx-background-color: rgb(204, 204, 204);
+     }

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="addWorkerPage" prefHeight="368.0" prefWidth="838.0" stylesheets="@addingPage.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ums.UI.AddController">
+   <children>
+      <Button id="director" fx:id="addWorkerToDBButton" layoutX="388.0" layoutY="242.0" mnemonicParsing="false" onAction="#addWorkerToDB" text="Добавить" visible="false" />
+      <TextField id="director" fx:id="surname" layoutX="38.0" layoutY="34.0" promptText="Фамилия" visible="false" />
+      <TextField id="director" fx:id="name" layoutX="228.0" layoutY="34.0" promptText="Имя" visible="false" />
+      <TextField id="director" fx:id="lastname" layoutX="413.0" layoutY="34.0" promptText="Отчество" visible="false" />
+      <ComboBox id="director" fx:id="choosePost" editable="true" layoutX="40.0" layoutY="89.0" onMouseClicked="#choosePost" prefWidth="150.0" promptText="Должность" visible="false" />
+      <TextField id="admin" fx:id="adminNewLoginField" layoutX="15.0" layoutY="77.0" promptText="Новый логин" visible="false" />
+      <TextField id="admin" fx:id="adminNewPasswordField" layoutX="179.0" layoutY="77.0" promptText="Новый пароль" visible="false" />
+      <TableView id="admin" fx:id="adminWorkersTable" editable="true" layoutX="350.0" layoutY="34.0" prefHeight="200.0" prefWidth="474.0" visible="false">
+         <columns>
+            <TableColumn fx:id="adminWorkerColumn" prefWidth="222.0" text="Сотрудник" />
+            <TableColumn fx:id="adminWorkerLoginColumn" minWidth="0.0" prefWidth="123.0" text="Логин" />
+            <TableColumn fx:id="adminWorkerPasswordColumn" prefWidth="128.0" text="Пароль" />
+         </columns>
+      </TableView>
+      <Button id="admin" fx:id="adminSetInfoTableButton" layoutX="179.0" layoutY="34.0" onAction="#setInfoTable" text="Показать" visible="false" />
+      <ComboBox id="admin" fx:id="adminAddingPageChoosePost" editable="true" layoutX="15.0" layoutY="34.0" onMouseClicked="#choosePost" prefWidth="150.0" promptText="Должность" visible="false" />
+      <Button id="admin" fx:id="adminAddWorkerLoginAndPasswordButton" layoutX="14.0" layoutY="114.0" mnemonicParsing="false" onAction="#setAdminAddWorkerLoginAndPassword" text="Добавить" visible="false" />
+      <TextField id="storekeeper" fx:id="storekeeperMedicineField" layoutX="38.0" layoutY="89.0" promptText="Лекарство" visible="false" />
+      <TextField id="storekeeper" fx:id="storekeeperCostField" layoutX="213.0" layoutY="89.0" promptText="Цена" visible="false" />
+      <TextField id="storekeeper" fx:id="storekeeperCountField" layoutX="383.0" layoutY="89.0" promptText="Количество " visible="false" />
+      <ComboBox id="storekeeper" fx:id="storekeeperChooseMedicineGroup" editable="true" layoutX="40.0" layoutY="34.0" onMouseClicked="#chooseMedicineGroup" prefWidth="150.0" promptText="Группа лекарств" visible="false" />
+      <ComboBox id="storekeeper" fx:id="storekeeperChooseState" editable="true" layoutX="213.0" layoutY="34.0" onMouseClicked="#chooseState" prefWidth="150.0" promptText="Страна" visible="false" />
+      <ComboBox id="storekeeper" fx:id="storekeeperChooseProvider" editable="true" layoutX="383.0" layoutY="36.0" onMouseClicked="#chooseProvider" prefWidth="150.0" promptText="Поставщик" visible="false" />
+      <Button id="storekeeper" fx:id="storekeeperAddProductToDBButton" layoutX="40.0" layoutY="139.0" mnemonicParsing="false" onAction="#setStorekeeperAddProductToDBButton" text="Добавить" visible="false" />
+      <TableView id="client" fx:id="clientMedicineTable" layoutX="14.0" layoutY="9.0" prefHeight="352.0" prefWidth="592.0">
+        <columns>
+          <TableColumn fx:id="clientMedicineNameColumn" prefWidth="150.0" text="Товар" />
+          <TableColumn fx:id="clientMedicineCostColumn" prefWidth="104.0" text="Цена" />
+            <TableColumn fx:id="clientMedicineSateColumn" prefWidth="170.0" text="Производитель" />
+            <TableColumn fx:id="clientMedicineProviderColumn" prefWidth="167.0" text="Поставщик" />
+        </columns>
+      </TableView>
+      <TextField id="client" fx:id="clientMedicineCount" layoutX="752.0" layoutY="9.0" prefHeight="25.0" prefWidth="27.0" />
+      <Label id="client" fx:id="clientCountLable" layoutX="623.0" layoutY="6.0" text="Введите количество" />
+      <Button id="client" fx:id="clientMakeOrderButton" layoutX="678.0" layoutY="330.0" mnemonicParsing="false" onAction="#setClientMakeOrderButton" text="Заказать" />
+      <Button id="client" fx:id="clientAddToOrderButton" layoutX="668.0" layoutY="47.0" mnemonicParsing="false" onAction="#setClientAddToOrderButton" text="Добавить в заказ" />
+      <Label id="client" layoutX="622.0" layoutY="81.0" text="Товары в заказе:" />
+      <TableView id="client" fx:id="clientPreOrderTable" layoutX="615.0" layoutY="104.0" prefHeight="160.0" prefWidth="200.0">
+        <columns>
+          <TableColumn fx:id="clientPreOrderMedicineNameColumn" prefWidth="105.0" text="Товар" />
+          <TableColumn fx:id="clientPreOrderedMedicineAmountColumn" prefWidth="94.0" text="Количество" />
+        </columns>
+      </TableView>
+      <Label id="client" layoutX="615.0" layoutY="276.0" text="Цена:" />
+      <Text id="client" fx:id="clientPreOrderedMedicinePrice" layoutX="657.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+   </children>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
+</AnchorPane>

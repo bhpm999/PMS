@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="homeAnchorPane" prefHeight="385.0" prefWidth="1007.0" stylesheets="@home.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ums.UI.HomeController">
+   <children>
+      <AnchorPane fx:id="topAnchor" layoutX="169.0" onMouseClicked="#returnHome" prefHeight="32.0" prefWidth="838.0" AnchorPane.bottomAnchor="368.0">
+         <children>
+            <Label id = "systemElement" layoutX="325.0" layoutY="9.0" text="PHARMACY MANAGEMENT SYSTEM">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></AnchorPane>
+      <Button fx:id="exitButton" id = "systemElement" layoutX="969.0" mnemonicParsing="false" onAction="#exit" prefHeight="32.0" prefWidth="31.0" AnchorPane.bottomAnchor="368.0" AnchorPane.leftAnchor="969.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="https://cdn-icons-png.flaticon.com/512/10307/10307932.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <AnchorPane fx:id="leftAnchor" prefHeight="400.0" prefWidth="177.0">
+         <children>
+            <ImageView id = "systemElement" fitHeight="59.0" fitWidth="52.0" layoutX="59.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="https://cdn-icons-png.flaticon.com/512/456/456212.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="addWorkerButton" id = "director" layoutX="5.0" layoutY="222.0" mnemonicParsing="false" onAction="#addingPage" prefHeight="25.0" prefWidth="156.0" text="Добавить работника" visible="false" AnchorPane.bottomAnchor="153.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="viewInfoAboutTeacherButton" layoutX="5.0" layoutY="222.0" mnemonicParsing="false" onAction="#viewInfoAboutTeacher" prefHeight="25.0" prefWidth="156.0" text="Просмотреть информацио о преподователе" visible="false" AnchorPane.bottomAnchor="153.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="calculateTeacherSalaryButton" layoutX="5.0" layoutY="262.0" mnemonicParsing="false" onAction="#calculateTeacherSalary" prefHeight="25.0" prefWidth="156.0" text="Расчитать зарплату преподователя" visible="false" AnchorPane.bottomAnchor="112.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label id = "systemElement" layoutX="69.0" layoutY="369.0" text="By I.R.">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Button fx:id="deleteWorkerButton" id = "director" layoutX="6.0" layoutY="263.0" mnemonicParsing="false" onAction="#deletingPage" prefHeight="25.0" prefWidth="155.0" text="Удалить работника" visible="false" />
+            <Label id = "systemElement" fx:id="userLabel" layoutX="60.0" layoutY="100.0" text="Админ">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="adminCreateWorkerAccountButton" id = "admin" layoutX="11.0" layoutY="190.0" mnemonicParsing="false" onAction="#addingPage" prefHeight="25.0" prefWidth="155.0" text="Создать аккаунт сотруднику" visible="false" />
+            <Button fx:id="adminDeleteClientAccountButton" id = "admin" layoutX="12.0" layoutY="230.0" mnemonicParsing="false" onAction="#deletingPage" prefHeight="25.0" prefWidth="155.0" text="Удалить аккаунт клиента" visible="false" />
+            <Button fx:id="storekeeperShowProductButton" id = "storeKeeper" layoutX="18.0" layoutY="170.0" mnemonicParsing="false" onAction="#viewInfoAboutTeacher" prefHeight="25.0" prefWidth="143.0" text="Просмотреть товар" visible="false" />
+            <Button fx:id="storekeeperAddProductButton" id = "storeKeeper" layoutX="18.0" layoutY="202.0" mnemonicParsing="false" onAction="#addingPage" prefHeight="25.0" prefWidth="143.0" text="Добавить товар" visible="false" />
+            <Button fx:id="storekeeperDeleteProductButton" id = "storeKeeper" layoutX="18.0" layoutY="236.0" mnemonicParsing="false" onAction="#deletingPage" prefHeight="25.0" prefWidth="143.0" text="Удалить товар" visible="false" />
+            <Button fx:id="clientShowProductsButton" id = "client" layoutX="27.0" layoutY="171.0" mnemonicParsing="false" onAction="#addingPage" text="Посмотреть товары" visible="false" />
+            <Button fx:id="clientMyOrders" id = "client" layoutX="27.0" layoutY="209.0" mnemonicParsing="false" onAction="#viewInfoAboutTeacher" prefHeight="25.0" prefWidth="126.0" text="Мои заказы" visible="false" />
+            <Button fx:id="pharmacistSendProductButton" id = "pharmacist" layoutX="32.0" layoutY="170.0" onAction="#viewInfoAboutTeacher" mnemonicParsing="false" prefHeight="25.0" prefWidth="116.0" text="Отправить заказ" />
+            <Button fx:id="pharmacistViewInfoButton" id = "pharmacist" layoutX="32.0" layoutY="210.0" onAction="#deletingPage" mnemonicParsing="false" text="Посмотреть отчёт" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="contentArea" layoutX="176.0" layoutY="32.0" prefHeight="368.0" prefWidth="831.0">
+         <children>
+            <AnchorPane fx:id="mainContentAreaPage" prefHeight="368.0" prefWidth="831.0">
+               <children>
+                  <Button fx:id="addWorkerButton2" id = "director" layoutX="241.0" layoutY="14.0" mnemonicParsing="false" onAction="#addingPage" prefHeight="85.0" prefWidth="155.0" text="Добавить работника" textAlignment="CENTER" visible="false" wrapText="true">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button fx:id="viewInfoAboutTeacherButton2" layoutX="241.0" layoutY="14.0" mnemonicParsing="false" onAction="#viewInfoAboutTeacher" prefHeight="85.0" prefWidth="155.0" text="Посмотреть информацию о преподавателе" textAlignment="CENTER" visible="false" wrapText="true">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button fx:id="calculateTeacherSalaryButton2" layoutX="413.0" layoutY="14.0" mnemonicParsing="false" onAction="#calculateTeacherSalary" prefHeight="85.0" prefWidth="155.0" text="Расчитать зарплату преподавателю" textAlignment="CENTER" visible="false" wrapText="true">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button fx:id="deleteWorkerButton2" id = "director" layoutX="413.0" layoutY="14.0" mnemonicParsing="false" onAction="#deletingPage" prefHeight="85.0" prefWidth="155.0" text="Удалить работника" textAlignment="CENTER" visible="false" wrapText="true">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="adminCreateWorkerAccountButton2" id = "admin" layoutX="216.0" layoutY="11.0" mnemonicParsing="false" onAction="#addingPage" prefHeight="91.0" prefWidth="155.0" text="Создать аккаунт сотрудника" textAlignment="CENTER" visible="false" wrapText="true" />
+                  <Button fx:id="adminDeleteClientAccountButton2" id = "admin" layoutX="421.0" layoutY="11.0" mnemonicParsing="false" onAction="#deletingPage" prefHeight="91.0" prefWidth="155.0" text="Удалить аккаунт клиента" textAlignment="CENTER" visible="false" wrapText="true" />
+                  <Button fx:id="storekeeperAddProductButton2" id = "storeKeeper" layoutX="337.0" layoutY="23.0" mnemonicParsing="false" onAction="#addingPage" prefHeight="85.0" prefWidth="155.0" text="Добавить товар" textAlignment="CENTER" visible="false" wrapText="true">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="storekeeperShowProductButton2" id = "storeKeeper" layoutX="165.0" layoutY="23.0" mnemonicParsing="false" onAction="#viewInfoAboutTeacher" prefHeight="85.0" prefWidth="155.0" text="Просмотреть товар" textAlignment="CENTER" visible="false" wrapText="true">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="storekeeperDeleteProductButton2" id = "storeKeeper" layoutX="507.0" layoutY="23.0" mnemonicParsing="false" onAction="#deletingPage" prefHeight="85.0" prefWidth="155.0" text="Удалить товар" textAlignment="CENTER" visible="false" wrapText="true">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="clientMyOrders2" id = "client" layoutX="431.0" layoutY="21.0" mnemonicParsing="false" onAction="#viewInfoAboutTeacher" prefHeight="91.0" prefWidth="155.0" text="Мои заказы" textAlignment="CENTER" visible="false" wrapText="true" />
+                  <Button fx:id="clientShowProductsButton2" id = "client" layoutX="260.0" layoutY="21.0" mnemonicParsing="false" onAction="#addingPage" prefHeight="91.0" prefWidth="155.0" text="Посмотреть товары" textAlignment="CENTER" visible="false" wrapText="true" />
+                  <Button fx:id="pharmacistSendProductButton2" id = "pharmacist" layoutX="251.0" layoutY="24.0" mnemonicParsing="false" onAction="#viewInfoAboutTeacher" prefHeight="85.0" prefWidth="155.0" text="Отправить заказ" textAlignment="CENTER" wrapText="true">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="pharmacistViewInfoButton2" id = "pharmacist" layoutX="421.0" layoutY="24.0" onAction="#deletingPage" mnemonicParsing="false" prefHeight="85.0" prefWidth="155.0" text="Посмотреть отчёт" textAlignment="CENTER" wrapText="true">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children></AnchorPane>
+   </children>
+</AnchorPane>
