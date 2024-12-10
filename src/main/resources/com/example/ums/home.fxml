@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="homeAnchorPane" prefHeight="385.0" prefWidth="1007.0" stylesheets="@home.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ums.UI.HomeController">
+<AnchorPane fx:id="homeAnchorPane" prefHeight="385.0" prefWidth="1007.0" stylesheets="@home.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ums.UI.controllers.HomeController">
    <children>
       <AnchorPane fx:id="topAnchor" layoutX="169.0" onMouseClicked="#returnHome" prefHeight="32.0" prefWidth="838.0" AnchorPane.bottomAnchor="368.0">
          <children>
@@ -54,11 +54,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="calculateTeacherSalaryButton" layoutX="5.0" layoutY="262.0" mnemonicParsing="false" onAction="#calculateTeacherSalary" prefHeight="25.0" prefWidth="156.0" text="Расчитать зарплату преподователя" visible="false" AnchorPane.bottomAnchor="112.0">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
+
             <Label id = "systemElement" layoutX="69.0" layoutY="369.0" text="By I.R.">
                <font>
                   <Font name="System Bold" size="12.0" />
@@ -93,10 +89,7 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                  <Button fx:id="calculateTeacherSalaryButton2" layoutX="413.0" layoutY="14.0" mnemonicParsing="false" onAction="#calculateTeacherSalary" prefHeight="85.0" prefWidth="155.0" text="Расчитать зарплату преподавателю" textAlignment="CENTER" visible="false" wrapText="true">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
+
                   <Button fx:id="deleteWorkerButton2" id = "director" layoutX="413.0" layoutY="14.0" mnemonicParsing="false" onAction="#deletingPage" prefHeight="85.0" prefWidth="155.0" text="Удалить работника" textAlignment="CENTER" visible="false" wrapText="true">
                      <cursor>
                         <Cursor fx:constant="HAND" />

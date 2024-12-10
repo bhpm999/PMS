@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import static com.example.ums.DAL.Repositories.DB.connectToDatabase;
+import static com.example.ums.DAL.db.DB.connectToDatabase;
 
 public class HelloApplication extends Application {
     @Override

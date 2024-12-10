@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="addWorkerPage" prefHeight="368.0" prefWidth="838.0" stylesheets="@addingPage.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ums.UI.AddController">
+<AnchorPane fx:id="addWorkerPage" prefHeight="368.0" prefWidth="838.0" stylesheets="@addingPage.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ums.UI.controllers.AddController">
    <children>
       <Button id="director" fx:id="addWorkerToDBButton" layoutX="388.0" layoutY="242.0" mnemonicParsing="false" onAction="#addWorkerToDB" text="Добавить" visible="false" />
       <TextField id="director" fx:id="surname" layoutX="38.0" layoutY="34.0" promptText="Фамилия" visible="false" />

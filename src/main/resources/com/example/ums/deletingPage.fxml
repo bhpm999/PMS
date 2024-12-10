@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="deleteWorkerPage" prefHeight="368.0" prefWidth="838.0" stylesheets="@deletingPage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ums.UI.DeleteController">
+<AnchorPane fx:id="deleteWorkerPage" prefHeight="368.0" prefWidth="838.0" stylesheets="@deletingPage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ums.UI.controllers.DeleteController">
    <children>
       <ComboBox fx:id="choosePost" id = "director" editable="true" layoutX="37.0" layoutY="26.0" onMouseClicked="#choosePost" prefWidth="150.0" promptText="Должность" visible="false" />
       <ComboBox fx:id="chooseWorker" id = "director" editable="true" layoutX="233.0" layoutY="26.0" onMouseClicked="#chooseWorker" prefWidth="150.0" promptText="Работник" visible="false" />

@@ -1,9 +1,9 @@
 package com.example.ums.UI;
 
-import com.example.ums.BLL.Service.LogINBLL;
+import com.example.ums.BLL.services.LogINService;
 
 public class Initialization {
-    private int roleIndex = LogINBLL.roleID;
+    private int roleIndex = LogINService.roleID;
     public Roles role;
     private void roleIndexation(){
         switch (roleIndex){
