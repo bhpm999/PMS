@@ -3,7 +3,6 @@ package com.example.ums.UI;
 import com.example.ums.BLL.DTO.MedicineDTO;
 import com.example.ums.BLL.DTO.WorkerDTO;
 import com.example.ums.BLL.Service.*;
-import com.example.ums.DAL.Interfaces.ComboBoxInfo;
 import javafx.collections.FXCollections;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
@@ -15,7 +14,7 @@ import java.util.Map;
 import java.util.concurrent.CancellationException;
 
 //Контроллер странички с добавлением работника
-public class AddController extends Initialization implements ComboBoxInfo, ElementsVisibility, Tables {
+public class AddController extends Initialization implements ElementsVisibility, Tables {
     public AnchorPane addWorkerPage;
     public Button addWorkerToDBButton;
     public TextField name;
@@ -123,8 +122,12 @@ public class AddController extends Initialization implements ComboBoxInfo, Eleme
     }
 
     public void choosePost(){
-        choosePost.setItems(choosePostList());
-        adminAddingPageChoosePost.setItems(choosePostList());
+        choosePost.setItems(FXCollections.observableArrayList(
+                comboboxBLL.findPosts()
+        ));
+        adminAddingPageChoosePost.setItems(FXCollections.observableArrayList(
+                comboboxBLL.findPosts()
+        ));
     }
     public void chooseState(){
         storekeeperChooseState.setItems(FXCollections.observableArrayList(

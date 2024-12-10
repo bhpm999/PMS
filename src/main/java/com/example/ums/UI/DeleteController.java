@@ -3,7 +3,6 @@ package com.example.ums.UI;
 import com.example.ums.BLL.DTO.MedicineDTO;
 import com.example.ums.BLL.DTO.UserDTO;
 import com.example.ums.BLL.Service.*;
-import com.example.ums.DAL.Interfaces.ComboBoxInfo;
 import javafx.collections.FXCollections;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -14,7 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import java.util.Map;
 import java.util.concurrent.CancellationException;
 
-public class DeleteController extends Initialization implements ComboBoxInfo, ElementsVisibility, Tables{
+public class DeleteController extends Initialization implements  ElementsVisibility, Tables{
     public AnchorPane deleteWorkerPage;
     public ComboBox<String> choosePost;
     public ComboBox<String> chooseWorker;
