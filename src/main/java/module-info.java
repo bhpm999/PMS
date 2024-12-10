@@ -32,4 +32,6 @@ module com.example.ums {
     opens com.example.ums.DAL.Repositories.StorekeeperCRUD to javafx.fxml;
     exports com.example.ums.BLL.DTO;
     opens com.example.ums.BLL.DTO to javafx.fxml;
+    exports com.example.ums.BLL.Service;
+    opens com.example.ums.BLL.Service to javafx.fxml;
 }

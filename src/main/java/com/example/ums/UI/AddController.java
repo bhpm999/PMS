@@ -2,10 +2,7 @@ package com.example.ums.UI;
 
 import com.example.ums.BLL.DTO.MedicineDTO;
 import com.example.ums.BLL.DTO.WorkerDTO;
-import com.example.ums.BLL.Service.AdminBLL;
-import com.example.ums.BLL.Service.ClientBLL;
-import com.example.ums.BLL.Service.DirectorBLL;
-import com.example.ums.BLL.Service.StorekeeperBLL;
+import com.example.ums.BLL.Service.*;
 import com.example.ums.DAL.Interfaces.ComboBoxInfo;
 import javafx.collections.FXCollections;
 import javafx.scene.control.*;
@@ -61,6 +58,7 @@ public class AddController extends Initialization implements ComboBoxInfo, Eleme
     Map<String,TableColumn<WorkerDTO,String>> adminWorkerTableMap;
     Map<String,TableColumn<MedicineDTO,String>> clientPreOrderedMedicineTableMap;
     public List<MedicineDTO> chosenMedicine = new ArrayList<>();
+    public ComboboxBLL comboboxBLL = new ComboboxBLL();
     public void initialize() {
         adminWorkerTableMap = Map.of("name",adminWorkerColumn,
                 "login",adminWorkerLoginColumn, "password",adminWorkerPasswordColumn);
@@ -129,13 +127,19 @@ public class AddController extends Initialization implements ComboBoxInfo, Eleme
         adminAddingPageChoosePost.setItems(choosePostList());
     }
     public void chooseState(){
-        storekeeperChooseState.setItems(chooseStateList());
+        storekeeperChooseState.setItems(FXCollections.observableArrayList(
+                comboboxBLL.findStates()
+        ));
     }
     public void chooseMedicineGroup(){
-        storekeeperChooseMedicineGroup.setItems(chooseMedicineGroupList());
+        storekeeperChooseMedicineGroup.setItems(FXCollections.observableArrayList(
+                comboboxBLL.findMedicineGroups()
+        ));
     }
     public void chooseProvider(){
-        storekeeperChooseProvider.setItems(chooseProviderList(storekeeperChooseState.getValue()));
+        storekeeperChooseProvider.setItems(FXCollections.observableArrayList(
+                comboboxBLL.findProviders(storekeeperChooseState.getValue())
+                ));
     }
 
     public void setInfoTable(){

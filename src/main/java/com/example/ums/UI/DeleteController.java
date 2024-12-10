@@ -2,11 +2,9 @@ package com.example.ums.UI;
 
 import com.example.ums.BLL.DTO.MedicineDTO;
 import com.example.ums.BLL.DTO.UserDTO;
-import com.example.ums.BLL.Service.AdminBLL;
-import com.example.ums.BLL.Service.DirectorBLL;
-import com.example.ums.BLL.Service.PharmacistBLL;
-import com.example.ums.BLL.Service.StorekeeperBLL;
+import com.example.ums.BLL.Service.*;
 import com.example.ums.DAL.Interfaces.ComboBoxInfo;
+import javafx.collections.FXCollections;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
@@ -41,6 +39,7 @@ public class DeleteController extends Initialization implements ComboBoxInfo, El
     public UserDTO selectedUser;
     Map<String,TableColumn<UserDTO,String>> adminUserTableMap;
     Map<String,TableColumn<MedicineDTO,String>> pharmacistMedicineTableMap;
+    ComboboxBLL comboboxCRUD = new ComboboxBLL();
 
     public void initialize() {
         adminUserTableMap = Map.of("Id",adminUserIdColumn,
@@ -76,16 +75,24 @@ public class DeleteController extends Initialization implements ComboBoxInfo, El
         setVisibility(deleteWorkerPage,"director");
     }
     public void choosePost(){
-        choosePost.setItems(choosePostList());
+        choosePost.setItems(FXCollections.observableArrayList(
+                comboboxCRUD.findPosts()
+        ));
     }
     public void chooseWorker() {
-        chooseWorker.setItems(chooseWorkerList(choosePost.getValue()));
+        chooseWorker.setItems(FXCollections.observableArrayList(
+                comboboxCRUD.findWorkers(choosePost.getValue())
+        ));
     }
     public void chooseMedicineGroup(){
-        storekeeperChooseGroup.setItems(chooseMedicineGroupList());
+        storekeeperChooseGroup.setItems(FXCollections.observableArrayList(
+                comboboxCRUD.findMedicineGroups()
+        ));
     }
     public void chooseMedicine(){
-        storekeeperChooseMedicine.setItems(chooseMedicineList(storekeeperChooseGroup.getValue()));
+        storekeeperChooseMedicine.setItems(FXCollections.observableArrayList(
+                comboboxCRUD.findMedicines(storekeeperChooseGroup.getValue())
+        ));
     }
 
 

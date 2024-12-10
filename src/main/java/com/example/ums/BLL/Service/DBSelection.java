@@ -5,6 +5,8 @@ import com.example.ums.DAL.Repositories.AdminCRUD.AdminCRUDMongo;
 import com.example.ums.DAL.Repositories.AdminCRUD.AdminCRUDSQL;
 import com.example.ums.DAL.Repositories.ClientCRUD.ClientCRUDMongo;
 import com.example.ums.DAL.Repositories.ClientCRUD.ClientCRUDSQL;
+import com.example.ums.DAL.Repositories.ComboboxCRUD.ComboboxCRUDMongo;
+import com.example.ums.DAL.Repositories.ComboboxCRUD.ComboboxCRUDSQL;
 import com.example.ums.DAL.Repositories.DirectorCRUD.DirectorCRUDMongo;
 import com.example.ums.DAL.Repositories.DirectorCRUD.DirectorCRUDSQL;
 import com.example.ums.DAL.Repositories.LogINBCRUD.LogINCRUDMongo;
@@ -29,6 +31,8 @@ public class DBSelection {
                 return dbType == DBs.mongoDB ? (T) new StoreKeeperCRUDMongo() : (T) new StorekeeperCRUDSQL();
             } else if (interfaceType == ILogIN.class) {
                 return dbType == DBs.mongoDB ? (T) new LogINCRUDMongo() : (T) new LogINCRUDSQL();
+            } else if (interfaceType == ICombobox.class) {
+                return dbType == DBs.mongoDB ? (T) new ComboboxCRUDMongo() : (T) new ComboboxCRUDSQL();
             } else {
                 throw new IllegalArgumentException("Некорректный тип интерфейса: " + interfaceType.getName());
             }
