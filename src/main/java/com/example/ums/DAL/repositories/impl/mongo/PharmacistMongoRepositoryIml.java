@@ -1,4 +1,4 @@
-package com.example.ums.DAL.repositories.impl.PharmacistImpl;
+package com.example.ums.DAL.repositories.impl.mongo;
 
 import com.example.ums.BLL.Increase;
 import com.example.ums.DAL.repositories.PharmacistRepository;
@@ -32,6 +32,7 @@ public class PharmacistMongoRepositoryIml implements PharmacistRepository {
         MongoDatabase database = DB.connectToDatabase();
         MongoCollection<Document> ordersCollection = database.getCollection("orders");
         ObservableList<Order> ordersList = FXCollections.observableArrayList();
+
         // Выполнение агрегационного запроса
         MongoCursor<Document> cursor = ordersCollection.aggregate(Arrays.asList(
                 new Document("$lookup", new Document()
@@ -60,7 +61,8 @@ public class PharmacistMongoRepositoryIml implements PharmacistRepository {
                 new Document("$unwind", "$statusDetails"),
                 new Document("$match", new Document("status_id", 1)),
                 new Document("$project", new Document()
-                        .append("id", 1)
+                        .append("date", "$date")
+                        .append("_id", "$_id")
                         .append("medicine_name", "$medicineDetails.medicine_name")
                         .append("provider_name", "$providerDetails.name")
                         .append("state_name", "$stateDetails.name")
@@ -78,12 +80,15 @@ public class PharmacistMongoRepositoryIml implements PharmacistRepository {
                     doc.getInteger("count"),
                     doc.getDouble("cost"),
                     doc.getString("status"),
-                    String.valueOf(doc.getObjectId("_id"))
+                    String.valueOf(doc.getObjectId("_id")),
+                    doc.getDate("date")
             );
             ordersList.add(order);
         }
+
         return ordersList;
     }
+
 
     @Override
     public ObservableList<Medicine> readMedicines() {

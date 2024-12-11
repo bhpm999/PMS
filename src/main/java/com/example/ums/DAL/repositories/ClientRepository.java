@@ -5,7 +5,7 @@ import com.example.ums.DAL.Models.Order;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public interface ClientRepository extends ICRUD {
+public interface ClientRepository extends Repository {
 
     default ObservableList<Order> readOrder(){
         return FXCollections.observableArrayList();

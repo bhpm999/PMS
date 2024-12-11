@@ -42,7 +42,7 @@ public class PharmacistService extends DBSelection {
         for (Order order:
                 pharmacistCRUD.readOrders()) {
             OrderDTO orderDTO = new OrderDTO(
-                    order.getName(),order.getProvider(),order.getState(), order.getCount(), order.getCost(),order.getStatus(),order.getId()
+                    order.getName(),order.getProvider(),order.getState(), order.getCount(), order.getCost(),order.getStatus(),order.getId(),order.getDate()
             );
             orderDTOS.add(orderDTO);
         }

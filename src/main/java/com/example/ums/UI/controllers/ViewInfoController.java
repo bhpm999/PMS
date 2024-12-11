@@ -53,9 +53,9 @@ public class ViewInfoController extends Initialization implements ElementsVisibi
 
     public void initialize() {
         pharmacistOrderTableMap = Map.of("name",pharmacistOrderNameColumn,"provider",pharmacistOrderProviderColumn,"state",pharmacistOrderStateColumn,
-                "count",pharmacistOrderCountColumn,"id",pharmacistOrderIdColumn);
+                "count",pharmacistOrderCountColumn,"date",pharmacistOrderIdColumn);
         clientOrderTableMap = Map.of("cost",clientOrderCostColumn,"name",clientOrderNameColumn,"provider",clientOrderProviderColumn,
-                "state", clientOrderSateColumn,"status",clientOrderStatusColumn, "count",clientOrderCountColumn, "id", clientOrderIdColumn);
+                "state", clientOrderSateColumn,"status",clientOrderStatusColumn, "count",clientOrderCountColumn, "date", clientOrderIdColumn);
         storeKeeperTableMap = Map.of("group",storekeeperMedicineGroupColumn,"name",storekeeperMedicineNameColumn,"count",
                 storekeeperMedicineCountColumn,"cost",storekeeperMedicineCostColumn, "provider",storekeeperMedicineProviderColumn, "state", storekeeperMedicineStateColumn);
         initialization();

@@ -1,4 +1,4 @@
-package com.example.ums.DAL.repositories.impl.PharmacistImpl;
+package com.example.ums.DAL.repositories.impl.sql;
 
 import com.example.ums.BLL.Increase;
 import com.example.ums.DAL.repositories.PharmacistRepository;
@@ -45,7 +45,7 @@ public class PharmacistSQLRepositoryImpl implements PharmacistRepository {
         return medicinesList;
     }
     public ObservableList<Order> readOrders(){
-        String insert = "select orders.id, medicines.medicine_name,provider.name as provider_name,state.name as state_name,orders.count,round(medicines.cost*"+ Increase.increase+",2)*orders.count as cost,status.name as status " +
+        String insert = "select orders.date, orders.id, medicines.medicine_name,provider.name as provider_name,state.name as state_name,orders.count,round(medicines.cost*"+ Increase.increase+",2)*orders.count as cost,status.name as status " +
                 "from medicines join provider on medicines.provider_id = provider.id " +
                 "join state on medicines.state_id = state.id " +
                 "join orders on orders.medicine_id = medicines.id " +
@@ -59,7 +59,7 @@ public class PharmacistSQLRepositoryImpl implements PharmacistRepository {
                 Order order = new Order(resultSet.getNString("medicine_name"),
                         resultSet.getNString("provider_name"), resultSet.getNString("state_name"),
                         resultSet.getInt("count"),resultSet.getDouble("cost"),resultSet.getNString("status"),
-                        String.valueOf(resultSet.getInt("id")));
+                        String.valueOf(resultSet.getInt("id")),resultSet.getDate("date"));
                 ordersList.add(order);
             }
         }
@@ -70,7 +70,7 @@ public class PharmacistSQLRepositoryImpl implements PharmacistRepository {
     }
 
     public void update(Map<String, Object> params) {
-        Integer id = (Integer) params.get("id");
+        Integer id = Integer.parseInt((String)params.get("id"));
 
         String query = "UPDATE orders SET status_id = 3 WHERE id = ?";
         try {

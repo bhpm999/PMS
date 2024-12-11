@@ -1,11 +1,11 @@
-package com.example.ums.DAL.repositories.impl.ClientImpl;
+package com.example.ums.DAL.repositories.impl.mongo;
 
 import com.example.ums.BLL.Increase;
 import com.example.ums.BLL.services.LogINService;
-import com.example.ums.DAL.repositories.ClientRepository;
 import com.example.ums.DAL.Models.Medicine;
 import com.example.ums.DAL.Models.Order;
 import com.example.ums.DAL.db.DB;
+import com.example.ums.DAL.repositories.ClientRepository;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
@@ -14,7 +14,9 @@ import javafx.collections.ObservableList;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -37,6 +39,8 @@ public class ClientMongoRepositoryIml implements ClientRepository {
         MongoCollection<Document> ordersCollection = database.getCollection("orders");
         MongoCollection<Document> medicinesCollection = database.getCollection("medicines");
 
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
+        String formattedDate = dateFormat.format(new Date());
         for (Medicine m : medicines) {
             Document medicineQuery = new Document("medicine_name", m.getName());
             Document medicineDoc = medicinesCollection.find(medicineQuery).first();
@@ -47,7 +51,8 @@ public class ClientMongoRepositoryIml implements ClientRepository {
                 Document orderDoc = new Document("user_id", LogINService.userID)
                         .append("medicine_id", medicineId)
                         .append("status_id", 2)
-                        .append("count", m.getCount());
+                        .append("count", m.getCount())
+                        .append("date", new Date());
 
                 ordersCollection.insertOne(orderDoc);
             }
@@ -104,64 +109,71 @@ public class ClientMongoRepositoryIml implements ClientRepository {
 
         return medicinesList;
     }
+    @Override
     public ObservableList<Order> readOrder() {
+        MongoDatabase database = DB.connectToDatabase();
+        MongoCollection<Document> ordersCollection = database.getCollection("orders");
         ObservableList<Order> ordersList = FXCollections.observableArrayList();
 
-            MongoDatabase database = DB.connectToDatabase();
-            MongoCollection<Document> ordersCollection = database.getCollection("orders");
+        // Выполнение агрегационного запроса
+        MongoCursor<Document> cursor = ordersCollection.aggregate(Arrays.asList(
+                new Document("$lookup", new Document()
+                        .append("from", "medicines")
+                        .append("localField", "medicine_id")
+                        .append("foreignField", "id")
+                        .append("as", "medicineDetails")),
+                new Document("$unwind", "$medicineDetails"),
+                new Document("$lookup", new Document()
+                        .append("from", "provider")
+                        .append("localField", "medicineDetails.provider_id")
+                        .append("foreignField", "id")
+                        .append("as", "providerDetails")),
+                new Document("$unwind", "$providerDetails"),
+                new Document("$lookup", new Document()
+                        .append("from", "state")
+                        .append("localField", "medicineDetails.state_id")
+                        .append("foreignField", "id")
+                        .append("as", "stateDetails")),
+                new Document("$unwind", "$stateDetails"),
+                new Document("$lookup", new Document()
+                        .append("from", "status")
+                        .append("localField", "status_id")
+                        .append("foreignField", "id")
+                        .append("as", "statusDetails")),
+                new Document("$unwind", "$statusDetails"),
+                new Document("$match", new Document("user_id", LogINService.userID)
+                        .append("status_id",new Document("$in", Arrays.asList(1, 2)))),
+                new Document("$project", new Document()
+                        .append("date", "$date")
+                        .append("_id", "$_id")
+                        .append("medicine_name", "$medicineDetails.medicine_name")
+                        .append("provider_name", "$providerDetails.name")
+                        .append("state_name", "$stateDetails.name")
+                        .append("count", "$count")
+                        .append("cost", new Document("$round", Arrays.asList(new Document("$multiply", Arrays.asList("$medicineDetails.cost", Increase.increase, "$count")), 2)))
+                        .append("status", "$statusDetails.name"))
+        )).iterator();
 
-            // Выполнение агрегационного запроса
-            MongoCursor<Document> cursor = ordersCollection.aggregate(Arrays.asList(
-                    new Document("$lookup", new Document()
-                            .append("from", "medicines")
-                            .append("localField", "medicine_id")
-                            .append("foreignField", "id")
-                            .append("as", "medicineDetails")),
-                    new Document("$unwind", "$medicineDetails"),
-                    new Document("$lookup", new Document()
-                            .append("from", "provider")
-                            .append("localField", "medicineDetails.provider_id")
-                            .append("foreignField", "id")
-                            .append("as", "providerDetails")),
-                    new Document("$unwind", "$providerDetails"),
-                    new Document("$lookup", new Document()
-                            .append("from", "state")
-                            .append("localField", "medicineDetails.state_id")
-                            .append("foreignField", "id")
-                            .append("as", "stateDetails")),
-                    new Document("$unwind", "$stateDetails"),
-                    new Document("$lookup", new Document()
-                            .append("from", "status")
-                            .append("localField", "status_id")
-                            .append("foreignField", "id")
-                            .append("as", "statusDetails")),
-                    new Document("$unwind", "$statusDetails"),
-                    new Document("$match", new Document("user_id", LogINService.userID)),
-                    new Document("$project", new Document()
-                            .append("id", 1)
-                            .append("medicine_name", "$medicineDetails.medicine_name")
-                            .append("provider_name", "$providerDetails.name")
-                            .append("state_name", "$stateDetails.name")
-                            .append("count", "$count")
-                            .append("cost", new Document("$round", Arrays.asList(new Document("$multiply", Arrays.asList("$medicineDetails.cost", Increase.increase, "$count")), 2)))
-                            .append("status", "$statusDetails.name"))
-            )).iterator();
+        while (cursor.hasNext()) {
+            Document doc = cursor.next();
+            Order order = new Order(
+                    doc.getString("medicine_name"),
+                    doc.getString("provider_name"),
+                    doc.getString("state_name"),
+                    doc.getInteger("count"),
+                    doc.getDouble("cost"),
+                    doc.getString("status"),
+                    String.valueOf(doc.getObjectId("_id")),
+                    doc.getDate("date")
+            );
+            ordersList.add(order);
+        }
 
-            while (cursor.hasNext()) {
-                Document doc = cursor.next();
-                Order order = new Order(
-                        doc.getString("medicine_name"),
-                        doc.getString("provider_name"),
-                        doc.getString("state_name"),
-                        doc.getInteger("count"),
-                        doc.getDouble("cost"),
-                        doc.getString("status"),
-                        String.valueOf(doc.getObjectId("_id"))
-                );
-                ordersList.add(order);
-            }
         return ordersList;
     }
+
+
+
 
 
 

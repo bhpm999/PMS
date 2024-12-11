@@ -1,4 +1,4 @@
-package com.example.ums.DAL.repositories.impl.DirectorImpl;
+package com.example.ums.DAL.repositories.impl.sql;
 
 import com.example.ums.DAL.repositories.DirectorRepository;
 import com.example.ums.DAL.db.DB;

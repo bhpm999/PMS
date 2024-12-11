@@ -1,4 +1,4 @@
-package com.example.ums.DAL.repositories.impl.ClientImpl;
+package com.example.ums.DAL.repositories.impl.sql;
 
 import com.example.ums.BLL.Increase;
 import com.example.ums.BLL.services.LogINService;
@@ -19,12 +19,12 @@ public class ClientSQLRepositoryImpl implements ClientRepository {
 
     @Override
     public ObservableList<Order> readOrder() {
-        String insert =  "select orders.id, medicines.medicine_name,provider.name as provider_name,state.name as state_name,orders.count,round(medicines.cost*"+ Increase.increase+",2)*orders.count as cost,status.name as status " +
+        String insert =  "select orders.date, orders.id, medicines.medicine_name,provider.name as provider_name,state.name as state_name,orders.count,round(medicines.cost*"+ Increase.increase+",2)*orders.count as cost,status.name as status " +
                 "from medicines join provider on medicines.provider_id = provider.id " +
                 "join state on medicines.state_id = state.id " +
                 "join orders on orders.medicine_id = medicines.id " +
                 "join status on orders.status_id = status.id " +
-                "where user_id = " + LogINService.userID;
+                "where user_id = " + LogINService.userID +" and status_id = 1 or status_id = 2";
         ObservableList<Order> ordersList = FXCollections.observableArrayList();
         try {
             PreparedStatement preparedStatement = DB.DBConnect().prepareStatement(insert);
@@ -33,7 +33,7 @@ public class ClientSQLRepositoryImpl implements ClientRepository {
                 Order order = new Order(resultSet.getNString("medicine_name"),
                         resultSet.getNString("provider_name"), resultSet.getNString("state_name"),
                         resultSet.getInt("count"),resultSet.getDouble("cost"),resultSet.getNString("status"),
-                        String.valueOf(resultSet.getInt("id")));
+                        String.valueOf(resultSet.getInt("id")),resultSet.getDate("date"));
                 ordersList.add(order);
             }
         }
@@ -71,7 +71,7 @@ public class ClientSQLRepositoryImpl implements ClientRepository {
 
 
     public void update(Map<String,Object> p) {
-            Integer id = (Integer) p.get("id");
+            Integer id = Integer.parseInt((String)p.get("id"));
             String insert1 = "UPDATE orders set status_id = 1 where id = " + id;
             try {
             PreparedStatement preparedStatement = DB.DBConnect().prepareStatement(insert1);

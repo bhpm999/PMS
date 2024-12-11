@@ -1,4 +1,4 @@
-package com.example.ums.DAL.repositories.impl.ComboboxImpl;
+package com.example.ums.DAL.repositories.impl.mongo;
 
 import com.example.ums.DAL.repositories.ComboboxRepository;
 import com.example.ums.DAL.db.DB;

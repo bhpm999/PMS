@@ -1,4 +1,4 @@
-package com.example.ums.DAL.repositories.impl.LogINImpl;
+package com.example.ums.DAL.repositories.impl.sql;
 
 import com.example.ums.BLL.services.LogINService;
 import com.example.ums.DAL.repositories.LogINRepository;

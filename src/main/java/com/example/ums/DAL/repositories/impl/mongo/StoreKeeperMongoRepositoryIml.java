@@ -1,4 +1,4 @@
-package com.example.ums.DAL.repositories.impl.StorekeeperImpl;
+package com.example.ums.DAL.repositories.impl.mongo;
 
 import com.example.ums.DAL.repositories.StorekeeperRepository;
 import com.example.ums.DAL.db.DB;

@@ -1,4 +1,4 @@
 package com.example.ums.DAL.repositories;
 
-public interface DirectorRepository extends ICRUD {
+public interface DirectorRepository extends Repository {
 }

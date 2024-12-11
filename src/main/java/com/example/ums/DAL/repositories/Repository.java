@@ -5,7 +5,7 @@ import javafx.collections.ObservableList;
 
 import java.util.Map;
 
-public interface ICRUD {
+public interface Repository {
      default void create(Map<String,Object> params){}
      default <T> ObservableList<T> read(){
           return FXCollections.observableArrayList();

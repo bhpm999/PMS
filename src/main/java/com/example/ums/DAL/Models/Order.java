@@ -1,5 +1,7 @@
 package com.example.ums.DAL.Models;
 
+import java.util.Date;
+
 public class Order {
     String name;
     String provider;
@@ -8,8 +10,8 @@ public class Order {
     Double cost;
     String status;
     String id;
-
-    public Order(String name, String provider, String state, Integer count, Double cost, String status,String id) {
+    Date date;
+    public Order(String name, String provider, String state, Integer count, Double cost, String status,String id, Date date) {
         this.name = name;
         this.provider = provider;
         this.state = state;
@@ -17,6 +19,7 @@ public class Order {
         this.cost = cost;
         this.status = status;
         this.id = id;
+        this.date = date;
     }
 
     public String getName() {
@@ -47,6 +50,10 @@ public class Order {
         return id;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -73,5 +80,9 @@ public class Order {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

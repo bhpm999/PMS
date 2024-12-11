@@ -1,5 +1,7 @@
 package com.example.ums.BLL.DTO;
 
+import java.util.Date;
+
 public class OrderDTO {
     String name;
     String provider;
@@ -8,8 +10,9 @@ public class OrderDTO {
     Double cost;
     String status;
     String id;
+    Date date;
 
-    public OrderDTO(String name, String provider, String state, Integer count, Double cost, String status, String id) {
+    public OrderDTO(String name, String provider, String state, Integer count, Double cost, String status, String id, Date date) {
         this.name = name;
         this.provider = provider;
         this.state = state;
@@ -17,6 +20,7 @@ public class OrderDTO {
         this.cost = cost;
         this.status = status;
         this.id = id;
+        this.date = date;
     }
 
     public String getName() {
@@ -47,6 +51,10 @@ public class OrderDTO {
         return id;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -73,5 +81,9 @@ public class OrderDTO {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

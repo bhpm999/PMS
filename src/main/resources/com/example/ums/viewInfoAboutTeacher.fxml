@@ -5,9 +5,9 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="viewInfoAboutTeacherPage" prefHeight="368.0" prefWidth="838.0" stylesheets="@viewInfoAboutTeacher.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ums.UI.controllers.ViewInfoController">
+<AnchorPane fx:id="viewInfoAboutTeacherPage" prefHeight="368.0" prefWidth="838.0" stylesheets="@viewInfoAboutTeacher.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ums.UI.controllers.ViewInfoController">
    <children>
-      <TableView fx:id="storekeeperMedicineTable" id = "storeKeeper" layoutX="-3.0" prefHeight="374.0" prefWidth="840.0" visible="false">
+      <TableView id="storeKeeper" fx:id="storekeeperMedicineTable" layoutX="-3.0" prefHeight="374.0" prefWidth="840.0" visible="false">
         <columns>
           <TableColumn fx:id="storekeeperMedicineNameColumn" minWidth="0.0" prefWidth="160.0" text="Наименование" />
           <TableColumn fx:id="storekeeperMedicineGroupColumn" prefWidth="160.0" text="Группа лекарств" />
@@ -17,7 +17,7 @@
             <TableColumn fx:id="storekeeperMedicineStateColumn" prefWidth="160.0" text="Производитель" />
         </columns>
       </TableView>
-      <TableView fx:id="clientOrderTable" id = "client" layoutX="6.0" layoutY="6.0" prefHeight="364.0" prefWidth="730.0" visible="false">
+      <TableView id="client" fx:id="clientOrderTable" layoutX="6.0" layoutY="6.0" prefHeight="364.0" prefWidth="730.0" visible="false">
         <columns>
           <TableColumn fx:id="clientOrderNameColumn" prefWidth="104.0" text="Наименование" />
             <TableColumn fx:id="clientOrderProviderColumn" prefWidth="120.0" text="Поставщик" />
@@ -25,19 +25,19 @@
             <TableColumn fx:id="clientOrderCountColumn" prefWidth="79.0" text="Количество" />
             <TableColumn fx:id="clientOrderCostColumn" prefWidth="66.0" text="Цена" />
             <TableColumn fx:id="clientOrderStatusColumn" prefWidth="122.0" text="Статус" />
-            <TableColumn fx:id="clientOrderIdColumn" prefWidth="86.0" text="Номер заказа" />
+            <TableColumn fx:id="clientOrderIdColumn" prefWidth="86.0" text="Дата" />
         </columns>
       </TableView>
-      <Button fx:id="clientPaymentButton" id = "client" layoutX="756.0" layoutY="162.0" mnemonicParsing="false" onAction="#updateStatus" text="Оплатить" visible="false" />
-      <TableView fx:id="pharmacistOrderTable" id = "pharmacist" layoutX="16.0" layoutY="16.0" prefHeight="364.0" prefWidth="630.0">
+      <Button id="client" fx:id="clientPaymentButton" layoutX="756.0" layoutY="162.0" mnemonicParsing="false" onAction="#updateStatus" text="Оплатить" visible="false" />
+      <TableView id="pharmacist" fx:id="pharmacistOrderTable" layoutX="16.0" layoutY="16.0" prefHeight="364.0" prefWidth="630.0">
          <columns>
             <TableColumn fx:id="pharmacistOrderNameColumn" prefWidth="126.0" text="Наименование" />
             <TableColumn fx:id="pharmacistOrderProviderColumn" prefWidth="126.0" text="Поставщик" />
             <TableColumn fx:id="pharmacistOrderStateColumn" prefWidth="126.0" text="Производитель" />
             <TableColumn fx:id="pharmacistOrderCountColumn" prefWidth="126.0" text="Количество" />
-            <TableColumn fx:id="pharmacistOrderIdColumn" prefWidth="126.0" text="Номер заказа" />
+            <TableColumn fx:id="pharmacistOrderIdColumn" prefWidth="126.0" text="Дата " />
          </columns>
       </TableView>
-      <Button fx:id="pharmacistSendOrderButton" id = "pharmacist" layoutX="710.0" layoutY="150.0" mnemonicParsing="false" onAction="#updateStatus" text="Отправить" />
+      <Button id="pharmacist" fx:id="pharmacistSendOrderButton" layoutX="710.0" layoutY="150.0" mnemonicParsing="false" onAction="#updateStatus" text="Отправить" />
    </children>
 </AnchorPane>

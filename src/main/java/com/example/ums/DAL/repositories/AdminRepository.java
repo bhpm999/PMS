@@ -7,7 +7,7 @@ import javafx.collections.ObservableList;
 
 import java.util.Map;
 
-public interface AdminRepository extends ICRUD {
+public interface AdminRepository extends Repository {
     default ObservableList<User> readUser(){
         return FXCollections.observableArrayList();
     };

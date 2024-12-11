@@ -1,20 +1,20 @@
 package com.example.ums.BLL.services;
 
 import com.example.ums.DAL.repositories.*;
-import com.example.ums.DAL.repositories.impl.AdminImpl.AdminMongoRepositoryIml;
-import com.example.ums.DAL.repositories.impl.AdminImpl.AdminSQLRepositoryImpl;
-import com.example.ums.DAL.repositories.impl.ClientImpl.ClientMongoRepositoryIml;
-import com.example.ums.DAL.repositories.impl.ClientImpl.ClientSQLRepositoryImpl;
-import com.example.ums.DAL.repositories.impl.ComboboxImpl.ComboboxMongoRepositoryIml;
-import com.example.ums.DAL.repositories.impl.ComboboxImpl.ComboboxSQLRepositoryImpl;
-import com.example.ums.DAL.repositories.impl.DirectorImpl.DirectorMongoRepositoryIml;
-import com.example.ums.DAL.repositories.impl.DirectorImpl.DirectorSQLRepositoryImpl;
-import com.example.ums.DAL.repositories.impl.LogINImpl.LogINMongoRepositoryIml;
-import com.example.ums.DAL.repositories.impl.LogINImpl.LogINSQLRepositoryImpl;
-import com.example.ums.DAL.repositories.impl.PharmacistImpl.PharmacistMongoRepositoryIml;
-import com.example.ums.DAL.repositories.impl.PharmacistImpl.PharmacistSQLRepositoryImpl;
-import com.example.ums.DAL.repositories.impl.StorekeeperImpl.StoreKeeperMongoRepositoryIml;
-import com.example.ums.DAL.repositories.impl.StorekeeperImpl.StorekeeperSQLRepositoryImpl;
+import com.example.ums.DAL.repositories.impl.mongo.AdminMongoRepositoryIml;
+import com.example.ums.DAL.repositories.impl.sql.AdminSQLRepositoryImpl;
+import com.example.ums.DAL.repositories.impl.mongo.ClientMongoRepositoryIml;
+import com.example.ums.DAL.repositories.impl.sql.ClientSQLRepositoryImpl;
+import com.example.ums.DAL.repositories.impl.mongo.ComboboxMongoRepositoryIml;
+import com.example.ums.DAL.repositories.impl.sql.ComboboxSQLRepositoryImpl;
+import com.example.ums.DAL.repositories.impl.mongo.DirectorMongoRepositoryIml;
+import com.example.ums.DAL.repositories.impl.sql.DirectorSQLRepositoryImpl;
+import com.example.ums.DAL.repositories.impl.mongo.LogINMongoRepositoryIml;
+import com.example.ums.DAL.repositories.impl.sql.LogINSQLRepositoryImpl;
+import com.example.ums.DAL.repositories.impl.mongo.PharmacistMongoRepositoryIml;
+import com.example.ums.DAL.repositories.impl.sql.PharmacistSQLRepositoryImpl;
+import com.example.ums.DAL.repositories.impl.mongo.StoreKeeperMongoRepositoryIml;
+import com.example.ums.DAL.repositories.impl.sql.StorekeeperSQLRepositoryImpl;
 import com.example.ums.UI.DBs;
 
 public class DBSelection {

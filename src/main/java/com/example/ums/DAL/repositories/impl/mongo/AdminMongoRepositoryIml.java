@@ -1,4 +1,4 @@
-package com.example.ums.DAL.repositories.impl.AdminImpl;
+package com.example.ums.DAL.repositories.impl.mongo;
 
 import com.example.ums.DAL.repositories.AdminRepository;
 import com.example.ums.DAL.db.DB;
